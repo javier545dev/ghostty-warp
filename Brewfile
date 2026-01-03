@@ -38,6 +38,27 @@ brew "mise"                      # Universal version manager
 brew "fnm"                       # Fast Node manager
 
 # ============================================
+# Productivity Tools
+# ============================================
+
+# Command corrections
+brew "thefuck"                   # Auto-correct failed commands
+
+# Snippet manager (Warp Workflows alternative)
+tap "knqyf263/pet"
+brew "knqyf263/pet/pet"          # CLI snippet manager
+
+# Extended completions
+brew "zsh-completions"           # Additional zsh completions
+
+# ============================================
+# Session Management
+# ============================================
+
+brew "tmux"                      # Terminal multiplexer
+brew "tmate"                     # Terminal sharing
+
+# ============================================
 # Optional but Recommended
 # ============================================
 
@@ -65,4 +86,4 @@ cask "font-iosevka-nerd-font"
 # - Bun: Install separately from https://bun.sh
 # - Oh My Zsh: Install with official script
 # - Ghostty: Install from https://ghostty.org
-# - Nerd Fonts: Uncomment font lines above or install manually
+# - AI (ShellGPT): pip3 install shell-gpt (see ai/README.md)

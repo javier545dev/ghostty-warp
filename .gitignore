@@ -14,4 +14,10 @@
 
 # Local machine-specific overrides (if any)
 config.local
-CLAUDE.md
+
+# Development notes and drafts
+specs/
+PROMPT.md
+IMPLEMENTATION_PLAN.md
+*.draft.md
+.claude/
