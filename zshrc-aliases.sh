@@ -18,14 +18,6 @@ alias gcozy="$HOME/.config/ghostty/gconfig cozy"
 alias gpro="$HOME/.config/ghostty/gconfig pro"
 
 # ==============================================
-# AI Command Suggestions (ShellGPT)
-# ==============================================
-# Requires: pip3 install shell-gpt
-alias ai='sgpt'                   # Natural language to command
-alias ais='sgpt --shell'          # Shell mode (auto-execute)
-alias aic='sgpt --code'           # Code generation
-
-# ==============================================
 # Workflow Snippets (pet)
 # ==============================================
 # Requires: brew install knqyf263/pet/pet

@@ -1,111 +1,97 @@
-# AI Command Suggestions
+# AI-Powered Terminal
 
-Ghostty Warp integrates AI-powered command suggestions using [ShellGPT](https://github.com/TheR1D/shell_gpt), giving you natural language to terminal command translation.
+Modern terminals benefit from AI assistance. Here are the best options for your workflow.
 
-## Quick Start
+## Recommended Tools
+
+### Claude Code (Recommended)
+
+If you're using Claude Code, you already have AI in your terminal. No additional setup needed.
 
 ```bash
-# Run setup
-./ai/sgpt-setup.sh
-
-# Or install manually
-pip3 install shell-gpt
+# You're already here!
+claude "how do I find large files"
 ```
 
-## Configuration
+### Gemini CLI (Free)
 
-1. Copy the example environment file:
-   ```bash
-   cp ai/.env.example ai/.env
-   ```
+Google's free AI assistant with 1,000 requests/day:
 
-2. Add your API key to `ai/.env`:
-   ```bash
-   OPENAI_API_KEY=sk-your-key-here
-   ```
+```bash
+# Install
+npm install -g @anthropic/gemini-cli
 
-### Using Local Models (Ollama)
+# Use
+gemini "compress all images in this directory"
+```
 
-For privacy-first, offline AI:
+### aider (AI Pair Programming)
+
+Best for code editing and refactoring:
+
+```bash
+# Install
+pip install aider-chat
+
+# Use with your repo
+aider --model claude-3-5-sonnet
+
+# Or with local models
+aider --model ollama/codellama
+```
+
+### OpenAI Codex CLI
+
+```bash
+npm install -g @openai/codex
+codex "write a bash script to backup my dotfiles"
+```
+
+## Shell Aliases
+
+Add to your `~/.zshrc` if you want quick access:
+
+```bash
+# If using aider
+alias pair='aider'
+
+# Quick AI query (choose your tool)
+alias ai='gemini'
+# or
+alias ai='claude'
+```
+
+## Philosophy
+
+Ghostty Warp doesn't force a specific AI tool because:
+
+1. **You probably already have one** - Claude Code, Cursor, etc.
+2. **AI tools evolve fast** - Today's best may be outdated tomorrow
+3. **BYOK** - Bring your own key, your own tool
+
+## Comparison
+
+| Tool | Free Tier | Best For |
+|------|-----------|----------|
+| Claude Code | With subscription | Already using Claude |
+| Gemini CLI | 1000/day | Free, fast queries |
+| aider | API costs | Code editing/refactoring |
+| Codex | API costs | OpenAI ecosystem |
+
+## Local Models (Privacy-First)
+
+For fully offline AI:
 
 ```bash
 # Install Ollama
 brew install ollama
 
-# Pull a model
+# Run a model
 ollama pull codellama
+ollama run codellama
 
-# Configure shell-gpt for local use
-export OPENAI_API_HOST=http://localhost:11434
+# Use with aider
+aider --model ollama/codellama
 ```
 
-## Usage
-
-### Basic Commands
-
-```bash
-# Natural language to command
-sgpt "list all files larger than 100MB"
-
-# Shell mode (executes immediately)
-sgpt --shell "find duplicate files in current directory"
-
-# Code generation
-sgpt --code "python script to parse CSV"
-```
-
-### Aliases
-
-Add these to your `~/.zshrc`:
-
-```bash
-# AI command suggestions
-alias ai='sgpt'
-alias ais='sgpt --shell'
-alias aic='sgpt --code'
-```
-
-Then use:
-```bash
-ai "how do I compress a folder"
-ais "kill process on port 3000"
-aic "bash function to backup files"
-```
-
-## Privacy
-
-- **BYOK (Bring Your Own Key)**: You control your API key
-- **Local option**: Use Ollama for fully offline AI
-- **No telemetry**: Your commands stay on your machine
-- **API keys never in repo**: Use `.env` file (gitignored)
-
-## Comparison with Warp AI
-
-| Feature | Warp | Ghostty + ShellGPT |
-|---------|------|-------------------|
-| Natural language commands | Yes | Yes |
-| Code generation | Yes | Yes |
-| Local models | No | Yes (Ollama) |
-| BYOK | No | Yes |
-| Privacy | Cloud-based | Local or BYOK |
-| Cost | Subscription | Pay-per-use or Free (Ollama) |
-
-## Troubleshooting
-
-### "API key not found"
-```bash
-# Check your .env file exists
-cat ai/.env
-
-# Or export directly
-export OPENAI_API_KEY=sk-your-key
-```
-
-### "Command not found: sgpt"
-```bash
-# Reinstall
-pip3 install shell-gpt --user
-
-# Add to PATH if needed
-export PATH="$HOME/.local/bin:$PATH"
-```
+No API keys, no internet, complete privacy.

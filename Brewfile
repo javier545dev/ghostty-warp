@@ -86,4 +86,4 @@ cask "font-iosevka-nerd-font"
 # - Bun: Install separately from https://bun.sh
 # - Oh My Zsh: Install with official script
 # - Ghostty: Install from https://ghostty.org
-# - AI (ShellGPT): pip3 install shell-gpt (see ai/README.md)
+# - AI Tools: See ai/README.md for recommendations (aider, Gemini CLI, etc.)

@@ -1,113 +1,85 @@
-# Recent Improvements
+# Changelog
 
-This document tracks the latest improvements made to ghostty-warp.
+## v2.0 - January 2026
 
-## October 27, 2025 - Major Feature Update
+Major feature release closing the gap with Warp Terminal.
 
-### 🔤 Automatic Font Installation
+### New Features
 
-**Problem Solved:** Users had to manually install Nerd Fonts, which was tedious and error-prone.
+#### Workflow Snippets (pet)
+- Parameterized command snippets, like Warp Workflows
+- 45+ pre-built snippets for git, docker, and development
+- Fuzzy search with fzf integration
+- Aliases: `pw` (search), `pe` (exec), `pn` (new), `pl` (list)
 
-**Solution:**
-- ✅ Updated `Brewfile` to automatically install all required Nerd Fonts
-- ✅ Created dedicated `install-fonts.sh` script for standalone font installation
-- ✅ Fonts now install automatically when running `./install-deps.sh`
+#### Command Corrections (thefuck)
+- Auto-correct failed commands
+- Aliases: `fuck`, `fix`
 
-**Fonts Included:**
-- JetBrains Mono Nerd Font (Cyberpunk Dev preset)
-- Fira Code Nerd Font
-- Cascadia Code Nerd Font (Professional Elegant preset)
-- Iosevka Nerd Font (Minimal Focus preset)
+#### Session Management (tmux)
+- Curated tmux config matching Ghostty Warp aesthetics
+- Tokyo Night inspired status bar
+- Vim-style keybindings
+- Mouse support enabled
 
-### ⌨️ Comprehensive Keybindings
+#### Terminal Sharing (tmate)
+- Share terminal sessions via SSH URL
+- Read-only sharing option
 
-**Problem Solved:** Only the main config had the shift+enter keybind. Other presets were missing this and other productivity keybindings.
+#### AI Integration Guide
+- Recommendations for modern AI tools
+- Claude Code, aider, Gemini CLI (free), Codex
+- Local models with Ollama
+- BYOK (Bring Your Own Key) philosophy
 
-**Solution:** Added complete productivity keybindings to ALL presets (Cyberpunk Dev, Minimal Focus, Cozy Coding, Professional Elegant)
-
-**Keybindings Added:**
-
-#### Text Operations
-- `Shift+Enter` - New line (escape sequence for multiline commands)
-- `Cmd+C` - Copy to clipboard
-- `Cmd+V` - Paste from clipboard
-
-#### Font Size Control
-- `Cmd++` - Increase font size
-- `Cmd+-` - Decrease font size
-- `Cmd+0` - Reset font size to default
-
-#### Navigation
-- `Cmd+K` - Clear screen and scrollback
-- `Cmd+T` - New tab
-- `Cmd+W` - Close current surface
-
-#### Split Management
-- `Cmd+D` - New split (right/vertical)
-- `Cmd+Shift+D` - New split (down/horizontal)
-- `Cmd+Shift+Enter` - Toggle split zoom (focus/unfocus)
-
-#### Tab Navigation
-- `Cmd+1` through `Cmd+9` - Jump to tab 1-9
-
-### 📦 Files Modified
-
-**Configuration Files:**
-- `config` - Main config (Cyberpunk Dev preset)
-- `presets/minimal-focus.conf`
-- `presets/cozy-coding.conf`
-- `presets/professional-elegant.conf`
-
-**Build/Install Files:**
-- `Brewfile` - Added Nerd Fonts
-- `install-fonts.sh` - New standalone font installer
-
-### 🎯 Impact
-
-**Before:**
-- ❌ Users had to manually install fonts
-- ❌ Inconsistent keybindings across presets
-- ❌ Missing productivity shortcuts
-
-**After:**
-- ✅ Zero-configuration font installation
-- ✅ Consistent, powerful keybindings across all presets
-- ✅ Full productivity shortcuts in every preset
-
-### 🚀 How to Apply
-
-**For New Installations:**
-```bash
-git clone https://github.com/Arakiss/ghostty-warp.git
-cd ghostty-warp
-./install-deps.sh  # Now includes fonts!
-./setup-complete.sh
+### Brewfile Additions
+```
+thefuck
+pet
+zsh-completions
+tmux
+tmate
 ```
 
-**For Existing Installations:**
+### New Aliases
 ```bash
-cd ghostty-warp
-git pull
-./install-fonts.sh  # Install missing fonts
-./setup-complete.sh  # Update configs
+# Workflows
+pw, pe, pn, pl
+
+# Command corrections
+fuck, fix
+
+# Extended completions enabled
 ```
 
-### 🙏 Credits
-
-- Keybind suggestion (shift+enter) from **@Adonay**
+### Documentation
+- Updated README with v2.0 features
+- Revised FEATURE_COMPARISON.md (~85% parity)
+- New ai/README.md, workflows/README.md, tmux/README.md
 
 ---
 
-## Future Improvement Ideas
+## v1.1 - October 27, 2025
 
-**Potential Enhancements:**
-- [ ] Global quick terminal keybind (`global:cmd+grave=toggle_quick_terminal`)
-- [ ] URL detection keybinds
-- [ ] Custom color schemes per preset
-- [ ] Screenshot/recording keybinds
-- [ ] Emacs-style split sequences (like `Ctrl+X>2`)
-- [ ] Theme switcher keybind
-- [ ] Copy URL under cursor keybind
-- [ ] Shell integration enhancements
+### Automatic Font Installation
+- Nerd Fonts install automatically with setup
+- Dedicated `install-fonts.sh` script
 
-**Want to contribute?** Check [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines!
+### Comprehensive Keybindings
+All presets now include:
+- `Shift+Enter` - Multiline commands
+- `Cmd+C/V` - Copy/Paste
+- `Cmd++/-/0` - Font size control
+- `Cmd+D` / `Cmd+Shift+D` - Splits
+- `Cmd+1-9` - Tab navigation
+
+---
+
+## v1.0 - October 2025
+
+Initial release with:
+- 4 curated presets
+- 5 color themes
+- 4 Nerd Fonts
+- Core productivity tools (fzf, zoxide, atuin, starship)
+- Git-based sync across machines
