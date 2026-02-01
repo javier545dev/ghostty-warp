@@ -34,7 +34,7 @@ Get Warp's productivity features without:
 ### Customization
 - **4 Presets**: Cyberpunk Dev, Minimal Focus, Cozy Coding, Professional
 - **5 Themes**: Tokyo Night, Catppuccin Mocha, Dracula, Nord, Gruvbox
-- **4 Fonts**: JetBrains Mono, Fira Code, Cascadia Code, Iosevka (Nerd Fonts)
+- **5 Fonts**: Monaspace Neon (default), JetBrains Mono, Fira Code, Cascadia Code, Iosevka
 
 ## Quick Start
 

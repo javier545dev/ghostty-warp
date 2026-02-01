@@ -74,6 +74,7 @@ brew "jq"                        # JSON processor
 # ============================================
 
 # Font installation - Nerd Fonts (now in homebrew/cask)
+cask "font-monaspace-nerd-font"       # GitHub's modern font (default)
 cask "font-jetbrains-mono-nerd-font"
 cask "font-fira-code-nerd-font"
 cask "font-caskaydia-cove-nerd-font"
