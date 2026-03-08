@@ -1,9 +1,10 @@
 # Ghostty Warp — Modern Terminal Configuration
 
-A modern terminal setup using **Ghostty** with curated open-source tools. Originally inspired by Warp Terminal's productivity features, rebuilt fully open source for **Linux** (CachyOS/Arch + Hyprland).
+A modern terminal setup using **Ghostty** with curated open-source tools. Originally inspired by Warp Terminal's productivity features, rebuilt fully open source for **Linux** and **macOS**.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Platform: Linux](https://img.shields.io/badge/Platform-Linux-blue.svg)]()
+[![Platform: macOS](https://img.shields.io/badge/Platform-macOS-silver.svg)]()
 [![WM: Hyprland](https://img.shields.io/badge/WM-Hyprland-cyan.svg)]()
 
 ## Why This Exists
@@ -27,6 +28,12 @@ Get Warp's productivity features without proprietary software, telemetry, cloud 
 - **5 Themes**: Tokyo Night, Catppuccin Mocha, Dracula, Nord, Gruvbox
 - **5 Fonts**: JetBrains Mono, Fira Code, Cascadia Code, Iosevka, Monaspace Neon
 
+### Cross-Platform
+
+- **Auto-detection** — `gconfig setup` detects your OS and applies the right keybinds and platform settings
+- **Linux** — `ctrl+shift+` keybinds, GTK options, Hyprland performance fixes
+- **macOS** — `cmd+` keybinds, hidden titlebar, global quick terminal toggle
+
 ## Quick Start
 
 ```bash
@@ -35,14 +42,17 @@ git clone https://github.com/Arakiss/ghostty-warp.git
 cd ghostty-warp
 
 # Copy to ghostty config
-cp -r themes presets fonts tmux gconfig ~/.config/ghostty/
+cp -r themes presets fonts tmux keybinds platform gconfig ~/.config/ghostty/
 chmod +x ~/.config/ghostty/gconfig
 
 # Add to PATH
 ln -sf ~/.config/ghostty/gconfig ~/.local/bin/gconfig
+
+# Detect platform and create symlinks (run once)
+gconfig setup
 ```
 
-**Prerequisites**: Linux, [Ghostty](https://ghostty.org), Nerd Fonts (JetBrainsMono recommended)
+**Prerequisites**: [Ghostty](https://ghostty.org), Nerd Fonts (JetBrainsMono recommended)
 
 ## Usage
 
@@ -78,50 +88,62 @@ gconfig font monaspace-neon
 ### Other Commands
 
 ```bash
+gconfig setup       # Detect platform, create symlinks
 gconfig status      # Show current configuration
 gconfig reset       # Restore default config
 gconfig             # Show help
 ```
 
-### Keyboard Shortcuts (Linux)
+### Keyboard Shortcuts
 
-**Clipboard**
+#### Linux
 
-- `Ctrl+Shift+C` — Copy
-- `Ctrl+Shift+V` — Paste
+| Action              | Shortcut                        |
+| ------------------- | ------------------------------- |
+| Copy / Paste        | `Ctrl+Shift+C` / `Ctrl+Shift+V` |
+| New tab / Close tab | `Ctrl+Shift+T` / `Ctrl+Shift+W` |
+| Jump to tab 1-9     | `Ctrl+Shift+1-9`                |
+| Cycle tabs          | `Ctrl+Tab` / `Ctrl+Shift+Tab`   |
+| Vertical split      | `Ctrl+Shift+D`                  |
+| Horizontal split    | `Ctrl+Shift+O`                  |
+| Toggle zoom         | `Ctrl+Shift+Z`                  |
+| Navigate splits     | `Ctrl+Shift+Arrow`              |
+| Font size +/-       | `Ctrl++` / `Ctrl+-`             |
 
-**Tabs**
+#### macOS
 
-- `Ctrl+Shift+T` — New tab
-- `Ctrl+Shift+W` — Close tab
-- `Ctrl+Shift+1-9` — Jump to tab
-- `Ctrl+Tab` / `Ctrl+Shift+Tab` — Cycle tabs
-
-**Splits**
-
-- `Ctrl+Shift+D` — Vertical split
-- `Ctrl+Shift+O` — Horizontal split
-- `Ctrl+Shift+Z` — Toggle zoom
-- `Ctrl+Shift+Arrow` — Navigate splits
-
-**Font Size**
-
-- `Ctrl++` / `Ctrl+-` — Increase/Decrease
-- `Ctrl+0` — Reset
+| Action              | Shortcut                      |
+| ------------------- | ----------------------------- |
+| Copy / Paste        | `Cmd+C` / `Cmd+V`             |
+| New tab / Close tab | `Cmd+T` / `Cmd+W`             |
+| Jump to tab 1-9     | `Cmd+1-9`                     |
+| Cycle tabs          | `Cmd+Shift+[` / `Cmd+Shift+]` |
+| Vertical split      | `Cmd+D`                       |
+| Horizontal split    | `Cmd+Shift+D`                 |
+| Toggle zoom         | `Cmd+Shift+Z`                 |
+| Navigate splits     | `Cmd+Alt+Arrow`               |
+| Font size +/-       | `Cmd++` / `Cmd+-`             |
+| Quick terminal      | `` Cmd+` `` (global)          |
 
 ## tmux Integration
 
-A matching tmux config with Tokyo Night colors and Wayland clipboard support:
+A matching tmux config with Tokyo Night colors and clipboard support:
 
 ```bash
 ln -sf ~/.config/ghostty/tmux/tmux.conf ~/.tmux.conf
 ```
 
-Features: vim keybindings, `|` and `-` for splits, mouse support, `wl-copy` integration.
+Features: vim keybindings, `|` and `-` for splits, mouse support, clipboard integration (wl-copy on Linux, pbcopy on macOS).
 
-## Hyprland Notes
+## Platform Notes
+
+### Linux (Hyprland)
 
 The config includes `async-backend = epoll` to fix rendering performance issues with Ghostty on Hyprland. See [ghostty#3224](https://github.com/ghostty-org/ghostty/discussions/3224).
+
+### macOS
+
+Includes `macos-titlebar-style = hidden` for a clean look and `global:cmd+grave=toggle_quick_terminal` for a system-wide dropdown terminal.
 
 ## Comparison with Warp
 
@@ -131,6 +153,7 @@ The config includes `async-backend = epoll` to fix rendering performance issues 
 | Syntax highlighting | Yes          | Yes (zsh plugin) |
 | Fuzzy history       | Cloud        | Local (fzf)      |
 | Session management  | Yes          | Yes (tmux)       |
+| Cross-platform      | macOS/Linux  | macOS/Linux      |
 | Open source         | No           | Yes              |
 | Offline             | No           | Yes              |
 | Telemetry           | Yes          | None             |
@@ -151,4 +174,4 @@ MIT — Use however you want.
 
 ---
 
-**Built for productivity.** Open source. Privacy-first. Linux-native.
+**Built for productivity.** Open source. Privacy-first. Cross-platform.
